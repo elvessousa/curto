@@ -9,5 +9,17 @@ def redirection(request, slug):
 
     url_redirect = UrlRedirect.objects.get(slug=slug)
 
-    if slug != 'admin/':
-        return redirect(url_redirect.target)
+    return redirect(url_redirect.target)
+
+
+def reports(request, slug):
+    """ Shows shortened link report on screen """
+
+    url_redirect = UrlRedirect.objects.get(slug=slug)
+    site_url = request.build_absolute_uri(f'/{slug}')
+    context = {
+        'reduce': url_redirect,
+        'url': site_url
+    }
+
+    return render(request, 'shortener/reports.html', context)
