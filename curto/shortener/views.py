@@ -1,9 +1,14 @@
+""" Site's views """
+
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.db.models import Count
 from django.db.models.functions import TruncDate
-
 from curto.shortener.models import UrlRedirect, UrlLog
+
+
+def home(request):
+    """ Home page """
+    return render(request, 'shortener/index.html')
 
 
 def redirection(request, slug):

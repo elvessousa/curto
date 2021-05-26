@@ -18,6 +18,7 @@ from django.urls import path
 from curto.shortener import views
 
 urlpatterns = [
+    path('', views.home),
     path('admin/', admin.site.urls),
     path('<slug:slug>', views.redirection),
     path('reports/<slug:slug>', views.reports),
